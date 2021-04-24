@@ -29,7 +29,7 @@ Future<List<MBPartner>> fetchPartners() async {
 }
 
 List<MBPartner> parsePartners(WindowTabDataResponse response) {
-  List<MBPartner> partners = List();
+  List<MBPartner> partners = List.empty(growable: true);
   MBPartner partner;
   if (response.getStatus == WebServiceResponseStatus.Error) {
     print(response.getErrorMessage);
@@ -73,7 +73,7 @@ Future<List<MInvoice>> fetchInvoices(int partnerId) async {
 }
 
 List<MInvoice> parseInvoices(WindowTabDataResponse response) {
-  List<MInvoice> invoices = List();
+  List<MInvoice> invoices = List.empty(growable: true);
   MInvoice invoice;
   if (response.getStatus == WebServiceResponseStatus.Error) {
     throw Exception(response.getErrorMessage);
@@ -121,7 +121,7 @@ Future<List<MPayment>> fetchPayments(int partnerId) async {
 }
 
 List<MPayment> parsePayments(WindowTabDataResponse response) {
-  List<MPayment> payments = List();
+  List<MPayment> payments = List.empty(growable: true);
   MPayment payment;
   if (response.getStatus == WebServiceResponseStatus.Error) {
     print(response.getErrorMessage);
