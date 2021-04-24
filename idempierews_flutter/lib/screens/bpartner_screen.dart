@@ -1,4 +1,4 @@
-import 'package:dynamic_theme/dynamic_theme.dart';
+// import 'package:dynamic_theme/dynamic_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:idempierews_flutter/models/soap_model.dart';
@@ -9,25 +9,20 @@ import 'package:idempierews_flutter/utilities/applocalizations.dart';
 class WelcomePageMain extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return DynamicTheme(
-        defaultBrightness: Brightness.light,
-        data: (brightness) =>
-            ThemeData(brightness: brightness, accentColor: Colors.green),
-        themedWidgetBuilder: (context, theme) {
-          return MaterialApp(
-              debugShowCheckedModeBanner: false,
-              supportedLocales: [
-                Locale('en', 'US'),
-                Locale('ar', ''),
-                Locale('fr', ''),
-              ],
-              localizationsDelegates: [
-                AppLocalizations.delegate,
-                GlobalMaterialLocalizations.delegate,
-                GlobalWidgetsLocalizations.delegate,
-              ],
-              home: WelcomePage());
-        });
+    return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        supportedLocales: [
+          Locale('en', 'US'),
+          Locale('ar', ''),
+          Locale('fr', ''),
+        ],
+        localizationsDelegates: [
+          AppLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+        ],
+        home: WelcomePage());
+    ;
   }
 }
 

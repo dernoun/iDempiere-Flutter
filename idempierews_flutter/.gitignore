@@ -44,5 +44,3 @@ app.*.map.json
 
 # Related to android
 key.properties
-
-pubspec.lock

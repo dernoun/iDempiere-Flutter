@@ -2,36 +2,30 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:idempierews_flutter/screens/bpartner_screen.dart';
+import 'package:idempierews_flutter/themes/material_demo_theme_data.dart';
 import 'package:idempierews_flutter/utilities/applocalizations.dart';
 import 'package:preferences/preferences.dart';
-import 'package:dynamic_theme/dynamic_theme.dart'; // Just for theme example
 import 'package:validators/validators.dart';
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return DynamicTheme(
-        defaultBrightness: Brightness.light,
-        data: (brightness) =>
-            ThemeData(brightness: brightness, accentColor: Colors.green),
-        themedWidgetBuilder: (context, theme) {
-          return MaterialApp(
-            debugShowCheckedModeBanner: false,
-            supportedLocales: [
-              Locale('en', 'US'),
-              Locale('ar', ''),
-              Locale('fr', ''),
-            ],
-            localizationsDelegates: [
-              AppLocalizations.delegate,
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-            ],
-            title: 'Preferences Demo',
-            theme: theme,
-            home: PreferencePageScreen(),
-          );
-        });
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      supportedLocales: [
+        Locale('en', 'US'),
+        Locale('ar', ''),
+        Locale('fr', ''),
+      ],
+      localizationsDelegates: [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
+      title: 'Preferences Demo',
+      theme: MaterialDemoThemeData.themeData,
+      home: PreferencePageScreen(),
+    );
   }
 }
 
@@ -117,32 +111,32 @@ class _PreferencePageScreenState extends State<PreferencePageScreen> {
                     }
                     return null;
                   }),
-                  PreferenceHider([
-                    PreferenceTitle(AppLocalizations.of(context)
-                        .translate('perso_pref_string')),
-                    RadioPreference(
-                      AppLocalizations.of(context)
-                          .translate('light_theme_pref_string'),
-                      'light',
-                      'ui_theme',
-                      isDefault: true,
-                      onSelect: () {
-                        PrefService.setBool('isDark', false);
-                        DynamicTheme.of(context)
-                            .setBrightness(Brightness.light);
-                      },
-                    ),
-                    RadioPreference(
-                      AppLocalizations.of(context)
-                          .translate('dark_theme_pref_string'),
-                      'dark',
-                      'ui_theme',
-                      onSelect: () {
-                        PrefService.setBool('isDark', true);
-                        DynamicTheme.of(context).setBrightness(Brightness.dark);
-                      },
-                    ),
-                  ], '!advanced_enabled'),
+                  // PreferenceHider([
+                  //   PreferenceTitle(AppLocalizations.of(context)
+                  //       .translate('perso_pref_string')),
+                  //   RadioPreference(
+                  //     AppLocalizations.of(context)
+                  //         .translate('light_theme_pref_string'),
+                  //     'light',
+                  //     'ui_theme',
+                  //     isDefault: true,
+                  //     onSelect: () {
+                  //       PrefService.setBool('isDark', false);
+                  //       DynamicTheme.of(context)
+                  //           .setBrightness(Brightness.light);
+                  //     },
+                  //   ),
+                  //   RadioPreference(
+                  //     AppLocalizations.of(context)
+                  //         .translate('dark_theme_pref_string'),
+                  //     'dark',
+                  //     'ui_theme',
+                  //     onSelect: () {
+                  //       PrefService.setBool('isDark', true);
+                  //       DynamicTheme.of(context).setBrightness(Brightness.dark);
+                  //     },
+                  //   ),
+                  // ], '!advanced_enabled'),
                   PreferenceTitle(AppLocalizations.of(context)
                       .translate('advanced_pref_string')),
                   CheckboxPreference(
